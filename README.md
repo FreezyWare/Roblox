@@ -1,2 +1,1 @@
-# Scripts
-FreezyDev's Roblox Lua scripts and projects.
+My Roblox lua scripts and projects.
