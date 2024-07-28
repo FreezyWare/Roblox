@@ -56,7 +56,7 @@ Title.BackgroundTransparency = 1
 Title.AnchorPoint = Vector2.new(0.5, 0.5)
 Title.Size = UDim2.new(0, 0, 0, 15)
 Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Title.Text = "External Executor"
+Title.Text = "Internal Executor"
 Title.AutomaticSize = Enum.AutomaticSize.X
 Title.Name = string.format("[%s] [%s] [%s]", GenerateRandomString(5), GenerateRandomString(5), GenerateRandomString(5))
 Title.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -461,11 +461,11 @@ Element:Tab("Theme")
 Element:Button("Execute", function()
 	if injected == true then
 		loadstring(TextBox.Text)()
-		Title.Text = "External Executor - Injected"
+		Title.Text = "Internal Executor - Injected"
 	else
-		Title.Text = "External Executor - Not Injected"
+		Title.Text = "Internal Executor - Not Injected"
 		wait(2)
-		Title.Text = "External Executor"
+		Title.Text = "Internal Executor"
 	end
 end)
 Element:Button("Clear", function()
@@ -479,17 +479,17 @@ Element:Button("File", function()
 end)
 Element:Button("Inject", function()
 	if injected == true then
-		Title.Text = "External Executor - Already Injected"
+		Title.Text = "Internal Executor - Already Injected"
 		wait(2)
-		Title.Text = "External Executor - Injected"
+		Title.Text = "Internal Executor - Injected"
 	else
-		Title.Text = "External Executor - Getting login token."
+		Title.Text = "Internal Executor - Getting login token."
 		wait(1)
-		Title.Text = "External Executor - Version: 6b63ea89d2e54fd7 | LIVE"
+		Title.Text = "Internal Executor - Version: 6b63ea89d2e54fd7 | LIVE"
 		wait(1)
-		Title.Text = "External Executor - Setting Up."
+		Title.Text = "Internal Executor - Setting Up."
 		wait(0.5)
-		Title.Text = "External Executor - Authenticating."
+		Title.Text = "Internal Executor - Authenticating."
 		wait(0.5)
 		Title.Text = "External Executor - Done!"
 		wait(0.5)
