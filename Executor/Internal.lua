@@ -491,9 +491,9 @@ Element:Button("Inject", function()
 		wait(0.5)
 		Title.Text = "Internal Executor - Authenticating."
 		wait(0.5)
-		Title.Text = "External Executor - Done!"
+		Title.Text = "Internal Executor - Done!"
 		wait(0.5)
-		Title.Text = "External Executor - Injected"
+		Title.Text = "Internal Executor - Injected"
 		injected = true
 	end
 end)
