@@ -123,42 +123,37 @@ local function CreateKeybindButton(keyName)
 	Keybind.Text = keyName
 	keybindButtons[keyName] = Keybind
 
-	Keybind.MouseButton1Click:Connect(function()
-		local Button = Instance.new("TextButton", Keyboard)
-		Button.BorderSizePixel = 0
-		Button.TextSize = 14
-		Button.TextColor3 = Color3.fromRGB(231, 231, 231)
-		Button.BackgroundColor3 = Color3.fromRGB(51, 51, 51)
-		Button.FontFace = Font.new("rbxasset://fonts/families/Inconsolata.json", Enum.FontWeight.Medium, Enum.FontStyle.Normal)
-		Button.AnchorPoint = Vector2.new(0.5, 0.5)
-		Button.AutomaticSize = Enum.AutomaticSize.X
-		Button.Size = UDim2.new(0, 30, 0, 30)
-		Button.Name = "Button_" .. keyName
-		Button.ClipsDescendants = true
-		Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-		Button.Text = keyName
-		Button.Position = UDim2.new(0.5, 0, 0.5, 0)
-		Button.Draggable = true
+	local vim = game:GetService('VirtualInputManager')
 
-		local UICorner = Instance.new("UICorner", Button)
-		UICorner.CornerRadius = UDim.new(0, 4)
-
-		Button.MouseButton1Click:Connect(function()
-			local vim = game:GetService('VirtualInputManager')
-			local input = {
-				hold = function(key, time)
-					vim:SendKeyEvent(true, key, false, nil)
-					task.wait(time)
-					vim:SendKeyEvent(false, key, false, nil)
-				end,
-				press = function(key)
-					vim:SendKeyEvent(true, key, false, nil)
-					task.wait(0.005)
-					vim:SendKeyEvent(false, key, false, nil)
-				end
-			}
-			input.press(Enum.KeyCode[keyName])
+	Keybind.MouseButton1Down:Connect(function()
+		local input = {
+			hold = function(key)
+				vim:SendKeyEvent(true, key, false, nil)
+			end,
+			press = function(key)
+				vim:SendKeyEvent(true, key, false, nil)
+				task.wait(0.005)
+				vim:SendKeyEvent(false, key, false, nil)
+			end
+		}
+		input.hold(Enum.KeyCode[keyName])
+		Keybind.MouseButton1Up:Connect(function()
+			vim:SendKeyEvent(false, Enum.KeyCode[keyName], false, nil)
 		end)
+	end)
+
+	Keybind.TouchTap:Connect(function()
+		local input = {
+			hold = function(key)
+				vim:SendKeyEvent(true, key, false, nil)
+			end,
+			press = function(key)
+				vim:SendKeyEvent(true, key, false, nil)
+				task.wait(0.005)
+				vim:SendKeyEvent(false, key, false, nil)
+			end
+		}
+		input.press(Enum.KeyCode[keyName])
 	end)
 end
 
